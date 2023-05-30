@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import {MoonLoader}  from "react-spinners";
 import SearchGame from "./SearchGame";
 import logo from "../assets/logo.png"
 import {useGetAllGenres} from "../actions/useGetAllGenres"
@@ -23,7 +24,8 @@ const DropdownMenu = () => {
                     className="py-1 px-2 rounded-md hover:bg-gray-300 dark:hover:bg-gray-700" 
                     key={genre.id}
                     >
-                        {isLoading && <p>Loading...</p>}
+                        {isLoading && 
+                        <MoonLoader className="text-blue-500 text-xl" />}
                         {isError && <p>Error...</p>}
                         <NavLink to={`/genres/${genre.slug}`}>
                             {genre.name}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import GameHeader from '../components/games/GameHeader'
 import {useGetPlatforms} from "../actions/getPlatforms"
-import Loader from '../components/Loader'
+import Loader from '../components/ui/Loader'
 import DeveloperCard from '../components/developers/DeveloperCard'
 import {CiCircleChevRight, CiCircleChevLeft} from "react-icons/ci"
 

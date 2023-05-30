@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPlatforms } from "..api";
+import { getPlatforms } from "../api";
 
 
 export const useGetPlatforms = (page) => {

@@ -7,15 +7,17 @@ function App() {
   
 
   return (
-    <Container>
-    <header>
-      <Navbar />
-    </header>
-      <main className="min-h-screen py-20">
-        <Outlet />
-      </main>
+    <>
+      <Container>
+        <header>
+          <Navbar />
+        </header>
+        <main className="min-h-screen py-20">
+          <Outlet />
+        </main>
+      </Container>
       <Footer />
-    </Container>
+    </>
   )
 }
 
