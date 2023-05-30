@@ -1,6 +1,6 @@
 import {useGetGames} from "../actions/useGetGames"
-import GameList from "../components/GameList"
-import GameCard from "../components/GameCard"
+import GameList from "../components/games/GameList"
+import GameCard from "../components/games/GameCard"
 import { useEffect } from "react"
 
 const Home = () => {

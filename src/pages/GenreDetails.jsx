@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import GenreHeader from "../components/genres/GenreHeader"
-import GameCard from "../components/GameCard"
+import GameCard from "../components/games/GameCard"
 import {useGetAllGenres} from "../actions/useGetAllGenres"
 import { useGetGameByGenre } from "../actions/useGetGameByGenre";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";

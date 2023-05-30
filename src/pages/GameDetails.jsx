@@ -2,11 +2,11 @@ import {useParams} from "react-router-dom"
 import {SlGameController} from "react-icons/sl"
 import {useGetSingleGame} from "../actions/useGetSingleGame"
 import { useEffect } from "react";
-import GameProfile from "../components/GameProfile";
-import GameTags from "../components/GameTags";
-import GameClip from "../components/GameClip";
-import GamePublishers from "../components/GamePublishers";
-import GameStores from "../components/GameStores";
+import GameProfile from "../components/games/GameProfile";
+import GameTags from "../components/games/GameTags";
+import GameClip from "../components/games/GameClip";
+import GamePublishers from "../components/games/GamePublishers";
+import GameStores from "../components/games/GameStores";
 
 const GameDetails = () => {
     const {id} = useParams();

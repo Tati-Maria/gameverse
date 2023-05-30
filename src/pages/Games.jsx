@@ -1,7 +1,7 @@
 import { useGetAllGames } from "../actions/useGetAllGames";
 import { useState, useEffect} from "react"
 import {BsArrowLeftShort, BsArrowRightShort} from "react-icons/bs"
-import GameCard from "../components/GameCard";
+import GameCard from "../components/games/GameCard";
 
 const Games = () => {
   const [page, setPage] = useState(1);

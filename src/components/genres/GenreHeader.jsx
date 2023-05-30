@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import GameHeader from "../GameHeader"
+import GameHeader from "../games/GameHeader"
 
 const GenreHeader = ({
     name,

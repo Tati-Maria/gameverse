@@ -67,6 +67,16 @@ const Navbar = () => {
                         Games
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink to={"/developers"}>
+                        Developers
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={"/platforms"}>
+                        Platforms
+                    </NavLink>
+                </li>
                 <li className="flex items-center gap-x-2 cursor-pointer relative">
                     <span>
                         Categories
