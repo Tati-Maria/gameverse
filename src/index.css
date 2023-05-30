@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .dark{
+    @apply bg-gray-900 text-zinc-50;
+  }
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+nav .logo img {
+  width: 2rem;
+  margin-right: 0.5rem;
+}
+
+nav .logo span {
+  color: #fb242b;
+}
+
+
+.btn {
+  @apply px-4 py-2 rounded-md text-white font-semibold bg-blue-500 transition-shadow duration-200 ease-in-out;
+}
+
+.btn:hover {
+  @apply shadow-md;
+}
+
+.btn:active {
+  @apply shadow-none translate-y-[2px];
+}
+
+.btn:focus {
+  @apply outline-none ring-2 ring-offset-2 ring-offset-white ring-blue-500;
+}
+
+.btn:disabled {
+  @apply opacity-50 cursor-not-allowed hover:shadow-none active:translate-y-0 focus:ring-offset-0;
+}
+
+*{
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #fb242b #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fb242b;
+  border-radius: 15px;
+  border: 3px solid #fff;
+}
+
+.input-search {
+  @apply border border-blue-500 py-1 px-4 rounded-full outline-none focus:ring-2 focus:ring-blue-500 w-full transition duration-200 ease-in-out; 
+}
+
+.input-search {
+  background-image: url("https://img.icons8.com/ios-filled/50/000000/search--v1.png");
+  background-repeat: no-repeat;
+  background-position: 1rem center;
+  background-size: 1.5rem;
+  padding-left: 3rem;
+}
+
