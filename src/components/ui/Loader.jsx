@@ -5,8 +5,9 @@ const Loader = () => {
         <div
         className="flex justify-center items-center h-screen"
         >
-            <ClockLoader 
-            className="text-blue-500 text-4xl"
+            <ClockLoader
+            color="#3B82F6" 
+            className="text-4xl"
             />
         </div>
     )

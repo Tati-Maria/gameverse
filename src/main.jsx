@@ -14,6 +14,7 @@ import GameDetails from './pages/GameDetails.jsx';
 import GenreDetails from './pages/GenreDetails.jsx';
 import Developers from './pages/Developers.jsx';
 import Platforms from './pages/Platforms.jsx';
+import NotFound from './pages/Not-Found.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,11 +22,10 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='/games' element={<Games />} />
       <Route path='/games/:id' element={<GameDetails />} />
-      <Route path='/genres' element={<h1>Hello</h1>} />
       <Route path='/genres/:slug' element={<GenreDetails />} />
       <Route path='/developers' element={<Developers />} />
       <Route path='/platforms' element={<Platforms />} />
-      <Route path='*' element={<h1>Not Found</h1>} />
+      <Route path='*' element={<NotFound />} />
     </Route>,
   )
 )
