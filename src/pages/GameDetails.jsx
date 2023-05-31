@@ -3,16 +3,21 @@ import {SlGameController} from "react-icons/sl"
 import {useGetSingleGame} from "../actions/useGetSingleGame"
 import { useEffect } from "react";
 import GameProfile from "../components/games/GameProfile";
-import GameTags from "../components/games/GameTags";
-import GamePublishers from "../components/games/GamePublishers";
-import GameStores from "../components/games/GameStores";
 import GameScreenshots from "../components/games/GameScreenshots";
 import { useGameScreenshots } from "../actions/getGameScreenShots";
+import {useGameCreators} from "../actions/getDevelopmentTeam"
+import GameCreators from "../components/games/GameCreators";
+import GamePublishers from "../components/games/GamePublishers";
+import GameTags from "../components/games/GameTags";    
+import GameStores from "../components/games/GameStores";
+
 
 const GameDetails = () => {
     const {id} = useParams();
     const {data: game, error, isLoading} = useGetSingleGame(id)
     const {data: screenshots} = useGameScreenshots(id)
+    const {data: creators} = useGameCreators(id)
+    
     useEffect(() => {
       window.scrollTo(0, 0)
       // update the document title
@@ -47,14 +52,13 @@ const GameDetails = () => {
         color={game?.dominant_color}
         />
         <div
-        className="flex flex-col md:flex-row md:justify-between md:items-center gap-10"
+        className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4"
         >
-          <GameTags
-          tags={game?.tags} 
-          />
           <GamePublishers
           publishers={game?.publishers} 
-          developers={game?.developers}
+          />
+          <GameTags
+          tags={game?.tags} 
           />
           <GameStores
           stores={game?.stores} 
@@ -62,6 +66,10 @@ const GameDetails = () => {
         </div>
         <GameScreenshots
         screenshots={screenshots?.results} 
+        />
+        <GameCreators
+        name={game?.name}
+        creators={creators?.results} 
         />
     </section>
   )

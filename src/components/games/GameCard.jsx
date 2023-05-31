@@ -15,7 +15,7 @@ const GameCard = ({
   parent_platforms,
 }) => {
 
-  const platforms = parent_platforms.map((platform) => {
+  const platforms = parent_platforms?.map((platform) => {
     switch (platform.platform.slug) {
       case "pc":
         return <HiComputerDesktop key={platform.platform.id} className="inline-block text-gray-500" />
@@ -26,7 +26,20 @@ const GameCard = ({
       default:
         return null
     }
-  })
+  });
+
+  //change colort of metric based on value
+  const metricColor = () => {
+    if (metric >= 75) {
+      return "bg-green-500"
+    } else if (metric >= 50) {
+      return "bg-yellow-500"
+    } else if (metric >= 25) {
+      return "bg-red-500"
+    } else {
+      return "bg-gray-500"
+    }
+  }
 
 
   return (
@@ -46,18 +59,16 @@ const GameCard = ({
         className="flex flex-col space-y-1"
         >
           <div className="flex space-x-2">
-            {platforms}
+            {platforms && platforms}
           </div>
           <div className="flex justify-between items-center">
             <h4>{name}</h4>
-            <span
-              className="bg-green-500 rounded-md px-2 py-1 text-xs font-semibold self-end"
-              >
-            {metric}
-          </span>
+            <div className={`rounded-full w-6 h-6 flex justify-center items-center ${metricColor()}`}>
+              <span className="text-xs">{metric}</span>
+            </div>
           </div>
           <div className="text-gray-500 flex flex-col dark:text-gray-400">
-            <small>Released: {released}</small>
+            <small>Release: {released}</small>
             <span>
               <HiStar className="inline-block text-yellow-500" />
               <small>{rating}</small>

@@ -1,6 +1,6 @@
-
+import {useGetNewGame, useGetUpcomingGame, useGetTrendingGame} from "../actions/getTrendingGame"
 import { usePopularGames } from "../actions/getPopularGames";
-import {useGetAllGenres} from "../actions/useGetAllGenres"
+// import {useGetAllGenres} from "../actions/useGetAllGenres"
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 
 import { useEffect, useState } from "react"
@@ -12,11 +12,10 @@ import GenrePopup from "../components/ui/GenrePopup"
 import Loader from "../components/ui/Loader"
 import GameHeader from "../components/games/GameHeader"
 import GameCard from "../components/games/GameCard";
-import DeveloperCard from "../components/developers/DeveloperCard"
 
 const options = {
   gap: '1rem',
-  perPage: 4,
+  perPage: 3,
   breakpoints: {
     640: {
       perPage: 2,
@@ -37,8 +36,10 @@ const options = {
 
 const Home = () => {
   const [open, setOpen] = useState(false);
-  const {data: genresData} = useGetAllGenres();
   const {data: popularGames, error, isLoading} = usePopularGames();
+  const {data: trendingGames} = useGetTrendingGame();
+  const {data: upcomingGames} = useGetUpcomingGame();
+  const {data: newGames} = useGetNewGame();
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -52,7 +53,7 @@ const Home = () => {
 
 
   return (
-    <section className="relative">
+    <section className="relative space-y-10">
       <article
       className="bg-gray-100 border border-gray-200 rounded-xl p-6 my-6 dark:bg-gray-800 dark:border-gray-700"
       >
@@ -84,14 +85,14 @@ const Home = () => {
           aria-label="Find your favorite games"
           className="w-full py-4"
           >
-            {popularGames.results.map((game) => (
+            {popularGames?.results?.map((game) => (
               <SplideSlide
               key={game.id}
               >
                 <GameCard
                 id={game.id}
                 name={game.name}
-                metric={game.metacritic}
+                metric={game.metacritic || 0}
                 background_image={game.background_image}
                 rating={game.rating}
                 released={game.released}
@@ -103,34 +104,87 @@ const Home = () => {
         </ul>
       </article>
       <div
-      className="my-6"
+      className="my-6 space-y-10"
       >
         <GameHeader
-        text="Browse by genre" 
+        text="Trending Games" 
         />
         <ul>
           <Splide
           options={options}
-          aria-label="Browse by genre"
+          aria-label="Trending Games"
           className="w-full py-4"
           >
-            {genresData.results.map((genre) => (
+            {trendingGames?.results?.map((game) => (
               <SplideSlide
-              key={genre.id}
+              key={game.id}
               >
-                <DeveloperCard
-                image={genre.image_background}
-                name={genre.name}
-                games={genre.games_count}
-                link={`/genres/${genre.slug}`} 
+                <GameCard
+                id={game.id}
+                name={game.name}
+                metric={game.metacritic || 0}
+                background_image={game.background_image || "https://via.placeholder.com/300"}
+                rating={game.rating}
+                released={game.released}
+                parent_platforms={game.parent_platforms}
                 />
-               </SplideSlide>
+              </SplideSlide>
             ))}
           </Splide>
         </ul>
       </div>
+      <div className="my-6 space-y-10">
+        <GameHeader
+        text="Upcoming Games"
+        />
+        <Splide
+        options={options}
+        >
+          {upcomingGames?.results?.map((game) => (
+            <SplideSlide
+            key={game.id}
+            >
+              <GameCard
+              id={game.id}
+              name={game.name}
+              metric={game.metacritic || 0}
+              background_image={game.background_image || game.background_image_additional || "https://via.placeholder.com/300"}
+              rating={game.rating}
+              released={game.released}
+              parent_platforms={game.parent_platforms}
+              />
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
       <div
-      className="space-y-4 bg-gray-100 border border-gray-200 rounded-xl p-6 my-6 dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center"
+      className="my-6 space-y-10"
+      >
+        <GameHeader
+        text="New Games"
+        />
+        <Splide
+        options={options}
+        >
+          {newGames?.results?.map((game) => (
+            <SplideSlide
+            key={game.id}
+            >
+              <GameCard
+              id={game.id}
+              name={game.name}
+              metric={game.metacritic || 0}
+              background_image={game.background_image || "https://via.placeholder.com/300"}
+              rating={game.rating}
+              released={game.released}
+              parent_platforms={game.parent_platforms}
+              />
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+      <div
+      className="space-y-4 bg-gray-100 border border-gray-200 rounded-xl p-6 mb-6 mt-20 dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center"
       >
         <GameHeader
         text="We have more than 5000 games for you to explore" 

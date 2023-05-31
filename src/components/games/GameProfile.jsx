@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom"
+import {CiFaceMeh} from "react-icons/ci"
+import {BsEmojiHeartEyes,BsHandThumbsDown , BsHandThumbsUp} from "react-icons/bs"
 import GameHeader from "./GameHeader"
 
 const GameProfile = ({
@@ -14,6 +16,61 @@ const GameProfile = ({
     name,
     ratings,
 }) => {
+
+    // add emojis based on ratings
+    const emojis = ratings.map(rating => {
+        if(rating.title === "exceptional") {
+            return (
+                <div className="flex space-x-1" key={rating.id}>
+                    <BsEmojiHeartEyes className="inline-block text-2xl text-yellow-500" />
+                    <span className="text-xs text-yellow-500">
+                        {rating.percent}%
+                    </span>
+                </div>
+            )
+        } else if(rating.title === "recommended") {
+            return (
+                <div className="flex space-x-1" key={rating.id}>
+                    <BsHandThumbsUp className="inline-block text-2xl text-green-500" />
+                    <span
+                    className="text-green-500 text-xs"
+                    >
+                        {rating.percent}%
+                    </span>
+                </div>
+            )
+        } else if(rating.title === "meh") {
+            return (
+                <div
+                className="flex space-x-1"
+                key={rating.id}
+                >
+                    <CiFaceMeh className="inline-block text-2xl text-gray-500" key={rating.id} />
+                    <span
+                    className="text-gray-500 text-xs"
+                    >
+                        {rating.percent}%
+                    </span>
+                </div>
+            )
+        } else {
+            return (
+                <div
+                className="flex space-x-1"
+                key={rating.id}
+                >
+                    <BsHandThumbsDown className="inline-block text-2xl text-red-500" />
+                    <span
+                    className="text-red-500 text-xs"
+                    >
+                        {rating.percent}%
+                    </span>
+                </div>
+            )
+        }
+    })
+
+
   return (
     <div
     className="mt-10"
@@ -53,16 +110,18 @@ const GameProfile = ({
                     <span>
                         Rating: {rating}
                     </span>
-                    <ul className="flex flex-col items-start gap-y-3 md:flex-row md:gap-x-10 md:gap-y-0 md:items-center">
-                        {ratings.map(rating => (
-                            <li
-                            className={`border-2 text-center rounded-lg px-2 py-1`} 
-                            key={rating.id}
-                            >
-                                {rating.title}: {rating.percent}%
-                            </li>
-                        ))}
-                    </ul>
+                    <div
+                    className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2"
+                    >
+                        <h4>
+                            Reactions
+                        </h4>
+                        <div
+                        className="flex space-x-2"
+                        >
+                            {emojis}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

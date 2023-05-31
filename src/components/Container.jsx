@@ -1,12 +1,21 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Toggle from "./Toggle";
 
 // eslint-disable-next-line react/prop-types
 const Container = ({children}) => {
   const [toggle, setToggle] = useState(false);
 
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setToggle(JSON.parse(storedTheme));
+    }
+  }, [toggle]);
+
   const toggleTheme = () => {
-    setToggle(!toggle);
+    const newMode = !toggle;
+    setToggle(newMode);
+    localStorage.setItem('theme', JSON.stringify(newMode));
   }
 
   return (

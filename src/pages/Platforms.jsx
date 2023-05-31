@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import GameHeader from '../components/games/GameHeader'
 import GameList from '../components/games/GameList'
 import {useGetPlatforms} from "../actions/getPlatforms"
 import Loader from '../components/ui/Loader'
 import DeveloperCard from '../components/developers/DeveloperCard'
 import {CiCircleChevRight, CiCircleChevLeft} from "react-icons/ci"
+import Title from '../components/ui/Title'
 
 
 const Platforms = () => {
@@ -38,8 +38,8 @@ const Platforms = () => {
     <section
     className="space-y-10"
     >
-        <GameHeader
-        text={`Found ${data?.count} Gaming Platforms`}
+        <Title
+        title={`${data?.count} Gaming Platforms`} 
         />
         <GameList>
             {data?.results?.map(platform => (

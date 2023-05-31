@@ -15,7 +15,7 @@ const GamePublishers = ({
         <ul
         className="flex flex-wrap mt-2"
         >
-            {publishers.map(publisher => (
+            {publishers?.map(publisher => (
                 <li
                 className="mr-2 mb-2 px-2 py-1 bg-gray-200 rounded-lg text-sm text-gray-500" 
                 key={publisher.id}>
@@ -24,7 +24,7 @@ const GamePublishers = ({
                     </span>
                 </li>
             ))}
-            {developers.map(developer => (
+            {developers?.map(developer => (
                 <li
                 className="mr-2 mb-2 px-2 py-1 bg-gray-200 rounded-lg text-sm text-gray-500"
                 key={developer.id}>

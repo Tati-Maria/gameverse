@@ -3,6 +3,8 @@ import Loader from "../components/ui/Loader";
 import { useState, useEffect} from "react"
 import {BsArrowLeftShort, BsArrowRightShort} from "react-icons/bs"
 import GameCard from "../components/games/GameCard";
+import Title from "../components/ui/Title";
+import GameList from "../components/games/GameList";
 
 const Games = () => {
   const [page, setPage] = useState(1);
@@ -38,13 +40,10 @@ const Games = () => {
     <section
     className="space-y-4"
     >
-        <h2
-        className="text-2xl flex items-center space-x-2 font-bold text-gray-800 uppercase tracking-wider"
-        >
-            All Games
-        </h2>
-        <ul
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        <Title
+        title="All Games" 
+        />
+        <GameList
         >
           {results?.map((game) => (
             <GameCard
@@ -61,7 +60,7 @@ const Games = () => {
           {isFetching && !isPreviousData && (
             <Loader />
           )}
-        </ul>
+        </GameList>
         <div
         className="flex justify-center space-x-2"
         >
