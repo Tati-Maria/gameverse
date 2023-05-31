@@ -3,12 +3,11 @@ import { usePopularGames } from "../actions/getPopularGames";
 // import {useGetAllGenres} from "../actions/useGetAllGenres"
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Link } from "react-router-dom";
-import {IoLibraryOutline} from "react-icons/io5"
+// import {IoLibraryOutline} from "react-icons/io5"
 
 //components
-import GenrePopup from "../components/ui/GenrePopup"
 import Loader from "../components/ui/Loader"
 import GameHeader from "../components/games/GameHeader"
 import GameCard from "../components/games/GameCard";
@@ -35,7 +34,7 @@ const options = {
 }
 
 const Home = () => {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const {data: popularGames, error, isLoading} = usePopularGames();
   const {data: trendingGames} = useGetTrendingGame();
   const {data: upcomingGames} = useGetUpcomingGame();
@@ -69,7 +68,7 @@ const Home = () => {
           <GameHeader
             text="Popular Games"  
             />
-            <button
+            {/* <button
             onClick={() => setOpen(prev => !prev)}
             className="btn-secondary"
             >
@@ -77,7 +76,7 @@ const Home = () => {
               <span>
                 See all Genres
               </span>
-            </button>
+            </button> */}
         </div>
         <ul>
           <Splide
@@ -197,7 +196,6 @@ const Home = () => {
           </Link>
         </p>
       </div>
-      {open && <GenrePopup open={open} setOpen={setOpen} />}
     </section>
   )
 }
