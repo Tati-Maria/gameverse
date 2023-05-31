@@ -1,13 +1,17 @@
 import {useGetGames} from "../actions/useGetGames"
 import {useGetAllGenres} from "../actions/useGetAllGenres"
 import {Splide, SplideSlide} from "@splidejs/react-splide";
-import { useEffect } from "react"
+import '@splidejs/react-splide/css';
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
+import {IoLibraryOutline} from "react-icons/io5"
+
+//components
+import GenrePopup from "../components/ui/GenrePopup"
 import Loader from "../components/ui/Loader"
 import GameHeader from "../components/games/GameHeader"
-import '@splidejs/react-splide/css';
 import GameCard from "../components/games/GameCard";
 import DeveloperCard from "../components/developers/DeveloperCard"
-import { Link } from "react-router-dom";
 
 const options = {
   gap: '1rem',
@@ -27,6 +31,7 @@ const options = {
 }
 
 const Home = () => {
+  const [open, setOpen] = useState(false);
   const {data, error, isLoading} = useGetGames();
   const {data: genresData} = useGetAllGenres();
 
@@ -42,7 +47,7 @@ const Home = () => {
 
 
   return (
-    <section>
+    <section className="relative">
       <article
       className="bg-gray-100 border border-gray-200 rounded-xl p-6 my-6 dark:bg-gray-800 dark:border-gray-700"
       >
@@ -52,11 +57,22 @@ const Home = () => {
       <article
       className="my-6"
       >
-        <h2>
+        <div
+        className="flex justify-between items-center my-10"
+        >
           <GameHeader
-          text="Find your favorite games"  
-          />
-        </h2>
+            text="Find your favorite games"  
+            />
+            <button
+            onClick={() => setOpen(prev => !prev)}
+            className="btn-secondary"
+            >
+              <IoLibraryOutline className="w-6 h-6" />
+              <span>
+                See all Genres
+              </span>
+            </button>
+        </div>
         <ul>
           <Splide
           options={options}
@@ -120,6 +136,7 @@ const Home = () => {
           </Link>
         </p>
       </div>
+      {open && <GenrePopup open={open} setOpen={setOpen} />}
     </section>
   )
 }

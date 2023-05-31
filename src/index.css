@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  @apply font-sans antialiased;
+  @apply bg-white dark:bg-gray-900;
+  @apply text-gray-900 dark:text-gray-50;
+}
+
 @layer components {
   .dark{
     @apply bg-gray-900 text-zinc-50;
@@ -44,6 +50,22 @@ nav .logo span {
 
 .btn:disabled {
   @apply opacity-50 cursor-not-allowed hover:shadow-none active:translate-y-0 focus:ring-offset-0;
+}
+
+.btn-secondary{
+  @apply flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 border border-indigo-200 dark:border-indigo-700 rounded-md px-4 py-2 transition duration-300 ease-in-out hover:bg-indigo-100 dark:hover:bg-indigo-900
+}
+
+.btn-secondary:hover {
+  @apply shadow-md;
+}
+
+.btn-secondary:active {
+  @apply shadow-none translate-y-[2px];
+}
+
+.btn-secondary:focus {
+  @apply outline-none ring-1 ring-offset-1 ring-offset-white ring-indigo-200;
 }
 
 *{

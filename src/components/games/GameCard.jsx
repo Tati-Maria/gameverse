@@ -11,7 +11,7 @@ const GameCard = ({
   background_image
 }) => {
   return (
-    <li
+    <div
     className="p-4 bg-gray-100 rounded-md shadow-lg overflow-hidden hover:shadow-md transition-shadow duration-300 ease-in-out dark:bg-gray-800 dark:text-white" 
     >
       <Link 
@@ -34,7 +34,7 @@ const GameCard = ({
           </div>
         </div>
       </Link>
-    </li>
+    </div>
   )
 }
 

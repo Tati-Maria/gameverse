@@ -9,7 +9,7 @@ const DeveloperCard = ({
 }) => {
   return (
 
-    <li
+    <div
     className="bg-gray-100 rounded-md p-4 shadow-md hover:shadow-lg transition duration-300 ease-in-out dark:hover:bg-gray-800 dark:bg-gray-800"
     >
         <div
@@ -34,7 +34,7 @@ const DeveloperCard = ({
                 )}
             </div>
         </div>
-    </li>
+    </div>
   )
 }
 
