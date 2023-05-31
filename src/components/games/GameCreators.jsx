@@ -35,6 +35,15 @@ const GameCreators = ({
         <Splide
         options={options}
         >
+            {creators?.length === 0 && (
+                <div
+                className="flex items-center justify-center space-x-2 text-gray-800 dark:text-gray-100"
+                >
+                    <span>
+                        No Creators Found
+                    </span>
+                </div>
+            )}
             {creators?.map((creator) => (
                 <SplideSlide
                 key={creator.id}

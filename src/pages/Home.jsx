@@ -17,7 +17,7 @@ const options = {
   perPage: 3,
   breakpoints: {
     640: {
-      perPage: 2,
+      perPage: 1,
     },
     768: {
       perPage: 2,
@@ -183,7 +183,7 @@ const Home = () => {
         </Splide>
       </div>
       <div
-      className="space-y-4 bg-gray-100 border border-gray-200 rounded-xl p-6 mb-6 mt-20 dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center"
+      className="space-y-4 bg-gray-100 border border-gray-200 rounded-xl p-6 mb-6 mt-20 dark:bg-gray-800 dark:border-gray-700 text-center flex flex-col justify-center items-center"
       >
         <GameHeader
         text="We have more than 5000 games for you to explore" 
