@@ -46,7 +46,7 @@ const GameScreenshots = ({
                     <img
                     src={screenshot.image}
                     alt={screenshot.title}
-                    className="rounded-md"
+                    className="rounded-md h-64 object-cover shadow-md"
                     />
                 </SplideSlide>
             ))}

@@ -37,11 +37,9 @@ const GameCreators = ({
         >
             {creators?.length === 0 && (
                 <div
-                className="flex items-center justify-center space-x-2 text-gray-800 dark:text-gray-100"
+                className="flex justify-center items-center w-full h-96 bg-gray-200 dark:bg-gray-800 rounded-md shadow-md"
                 >
-                    <span>
-                        No Creators Found
-                    </span>
+                    <h2>No screenshots available</h2>
                 </div>
             )}
             {creators?.map((creator) => (

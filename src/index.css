@@ -41,7 +41,7 @@ nav .logo span {
 }
 
 .splide__arrow {
-  @apply rounded-full p-2;
+  @apply rounded-full;
 }
 
 .splide__pagination__page {
@@ -120,7 +120,7 @@ nav .logo span {
 }
 
 .input-search {
-  @apply border border-blue-500 py-1 px-4 rounded-full outline-none focus:ring-2 focus:ring-blue-500 w-full transition duration-200 ease-in-out; 
+  @apply border border-blue-500 py-1.5 px-4 rounded-full outline-none focus:ring-2 focus:ring-blue-500 w-full transition duration-200 ease-in-out; 
 }
 
 .input-search {
@@ -131,3 +131,24 @@ nav .logo span {
   padding-left: 3rem;
 }
 
+/* Genres Scrollbar invisible*/
+section#genres{
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+section#genres::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+section#genres::-webkit-scrollbar-track {
+  width: 0px;
+}
+
+section#genres::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 15px;
+  border: 3px solid transparent;
+}

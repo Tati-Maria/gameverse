@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import GenreHeader from "../components/genres/GenreHeader"
 import GameCard from "../components/games/GameCard"
 import {useGetAllGenres} from "../actions/useGetAllGenres"
+import Loader from "../components/ui/Loader";
 import { useGetGameByGenre } from "../actions/useGetGameByGenre";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 
@@ -19,10 +20,10 @@ const GenreDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
     // update the document title
-    document.title = `${genre.name} | GameVerse`
+    document.title = `${genre?.name} | GameVerse`
   }, [genre])
   
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>
     Error: {error.message}
   </p>;
@@ -36,21 +37,23 @@ const GenreDetails = () => {
     <section>
       <div>
         <GenreHeader
-        name={genre.name}
-        images={genre.image_background}
-        count={genre.games_count}
+        name={genre?.name}
+        images={genre?.image_background}
+        count={genre?.games_count}
         />
         <ul
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 my-10"
         >
-          {games.results.map((game) => (
+          {games?.results.map((game) => (
             <GameCard
-            key={game.id}
-            released={game.released}
-            background_image={game.background_image}
-            rating={game.rating}
-            name={game.name} 
-            id={game.id}
+            key={game?.id}
+            released={game?.released}
+            background_image={game?.background_image || "https://via.placeholder.com/300x400"}
+            rating={game?.rating}
+            name={game?.name} 
+            id={game?.id}
+            parent_platforms={game.parent_platforms}
+            metric={game.metacritic || 0}
             />
           ))}
           {isFetching && !isPreviousData && (
@@ -68,6 +71,9 @@ const GenreDetails = () => {
               <BsArrowLeftShort onClick={handlePrevious} />
             </button>
           )}
+          <span>
+           {page}
+          </span>
           {games?.next && (
             <button
             className="btn"

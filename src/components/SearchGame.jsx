@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { SyncLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import {useSearchGame} from "../actions/useSearchGame"
 
@@ -8,9 +9,13 @@ const SearchResults = ({isLoading, data, clearInput}) => {
 
   return (
     <div 
-    className="absolute top-10 left-0 flex flex-col px-4 py-2 divide-y divide-gray-400 overflow-y-scroll w-full max-h-96 bg-gray-100 rounded-md shadow-md dark:bg-gray-800 dark:text-gray-100 z-50"
+    className="absolute top-10 left-0 flex flex-col px-4 py-2 divide-y divide-gray-400 overflow-y-scroll w-full max-h-96 bg-gray-100 rounded-md shadow-md dark:bg-gray-800 dark:text-gray-100 z-50 "
     >
-      {isLoading && <p>Loading...</p>}
+      {isLoading && (
+        <div className="flex items-center justify-center py-4">
+          <SyncLoader color="#3B82F6" />
+        </div>
+      )}
       {data && games?.map((game) => (
         <Link
         onClick={clearInput}
@@ -36,7 +41,7 @@ const SearchGame = () => {
   }
 
   return (
-    <form className="relative">
+    <form className="relative block">
       <input 
       type="text" 
       placeholder="Eg. Cyberpunk 2077"
