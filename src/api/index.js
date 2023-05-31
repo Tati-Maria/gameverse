@@ -63,3 +63,15 @@ export const getGameCreators = async(id) => {
     const {data} = await axios.get(`${apiUrl}/games/${id}/development-team?key=${apiKEY}`);
     return data;
 }
+
+//get all creators
+export const getAllCreators = async(page) => {
+    const {data} = await axios.get(`${apiUrl}/creators?key=${apiKEY}&page=${page}&page_size=16`);
+    return data;
+}
+
+//get single developer
+export const getSingleCreator = async(id) => {
+    const {data} = await axios.get(`${apiUrl}/creators/${id}?key=${apiKEY}`);
+    return data;
+}

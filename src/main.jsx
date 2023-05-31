@@ -15,6 +15,7 @@ import GenreDetails from './pages/GenreDetails.jsx';
 import Developers from './pages/Developers.jsx';
 import Platforms from './pages/Platforms.jsx';
 import NotFound from './pages/Not-Found.jsx';
+import CreatorDetail from './pages/CreatorDetail.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route path='/games/:id' element={<GameDetails />} />
       <Route path='/genres/:slug' element={<GenreDetails />} />
       <Route path='/developers' element={<Developers />} />
+      <Route path='/creators/:slug' element={<CreatorDetail />} />
       <Route path='/platforms' element={<Platforms />} />
       <Route path='*' element={<NotFound />} />
     </Route>,
