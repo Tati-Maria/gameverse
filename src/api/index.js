@@ -75,3 +75,9 @@ export const getSingleCreator = async(id) => {
     const {data} = await axios.get(`${apiUrl}/creators/${id}?key=${apiKEY}`);
     return data;
 }
+
+// get creators without pagination
+export const getCreators = async() => {
+    const {data} = await axios.get(`${apiUrl}/creators?key=${apiKEY}`);
+    return data;
+}

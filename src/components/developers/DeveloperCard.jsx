@@ -29,7 +29,7 @@ const DeveloperCard = ({
                   <Link
                   className="text-blue-500 hover:underline" 
                   to={link}>
-                      See their games
+                      See more
                   </Link>
                 )}
             </div>

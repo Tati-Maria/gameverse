@@ -70,6 +70,7 @@ const GameDetails = () => {
         <GameCreators
         name={game?.name}
         creators={creators?.results} 
+        count={creators?.count}
         />
     </section>
   )

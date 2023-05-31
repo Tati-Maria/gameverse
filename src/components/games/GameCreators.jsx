@@ -22,12 +22,15 @@ const options = {
 
 const GameCreators = ({
     creators,
-    name
+    name,
+    count
 }) => {
+    
+
   return (
     <div className="my-20 py-10 space-y-10">
         <GameHeader 
-        text={`${name} Developement Team`}
+        text={`${name} Developement Team (${count})`}
         />
         <Splide
         options={options}

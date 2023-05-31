@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSingleCreator } from "../api";
+import { getSingleCreator, getCreators } from "../api";
 
 
 export const useGetSingleCreator = (id) => {
@@ -10,3 +10,12 @@ export const useGetSingleCreator = (id) => {
 
     return {data, isLoading, isError, error, isFetching};
 };
+
+export const useGetCreators = () => {
+    const {data, isLoading, isError, error, isFetching} = useQuery({
+        queryKey: ["creators"],
+        queryFn: () => getCreators(),
+    });
+
+    return {data, isLoading, isError, error, isFetching};
+}
