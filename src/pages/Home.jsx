@@ -1,7 +1,8 @@
-import {useGetGames} from "../actions/useGetGames"
+
+import { usePopularGames } from "../actions/getPopularGames";
 import {useGetAllGenres} from "../actions/useGetAllGenres"
 import {Splide, SplideSlide} from "@splidejs/react-splide";
-import '@splidejs/react-splide/css';
+
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import {IoLibraryOutline} from "react-icons/io5"
@@ -21,19 +22,23 @@ const options = {
       perPage: 2,
     },
     768: {
-      perPage: 3,
+      perPage: 2,
     },
     1024: {
-      perPage: 4,
+      perPage: 3,
     },
   },
   rewind: true,
+  tracker: false,
+  arrows: true,
+  lazyLoad: 'nearby',
+  pagination: true,
 }
 
 const Home = () => {
   const [open, setOpen] = useState(false);
-  const {data, error, isLoading} = useGetGames();
   const {data: genresData} = useGetAllGenres();
+  const {data: popularGames, error, isLoading} = usePopularGames();
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -61,7 +66,7 @@ const Home = () => {
         className="flex justify-between items-center my-10"
         >
           <GameHeader
-            text="Find your favorite games"  
+            text="Popular Games"  
             />
             <button
             onClick={() => setOpen(prev => !prev)}
@@ -79,16 +84,18 @@ const Home = () => {
           aria-label="Find your favorite games"
           className="w-full py-4"
           >
-            {data.results.map((game) => (
+            {popularGames.results.map((game) => (
               <SplideSlide
               key={game.id}
               >
                 <GameCard
                 id={game.id}
                 name={game.name}
+                metric={game.metacritic}
                 background_image={game.background_image}
                 rating={game.rating}
                 released={game.released}
+                parent_platforms={game.parent_platforms}
                 />
               </SplideSlide>
             ))}

@@ -15,8 +15,8 @@ function App() {
         <main className="min-h-screen py-20">
           <Outlet />
         </main>
+        < Footer />
       </Container>
-      <Footer />
     </>
   )
 }

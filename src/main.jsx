@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import '@splidejs/react-splide/css';
 import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route} from 'react-router-dom';
 import {
   QueryClient,

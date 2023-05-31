@@ -4,14 +4,15 @@ import {useGetSingleGame} from "../actions/useGetSingleGame"
 import { useEffect } from "react";
 import GameProfile from "../components/games/GameProfile";
 import GameTags from "../components/games/GameTags";
-import GameClip from "../components/games/GameClip";
 import GamePublishers from "../components/games/GamePublishers";
 import GameStores from "../components/games/GameStores";
+import GameScreenshots from "../components/games/GameScreenshots";
+import { useGameScreenshots } from "../actions/getGameScreenShots";
 
 const GameDetails = () => {
     const {id} = useParams();
     const {data: game, error, isLoading} = useGetSingleGame(id)
-
+    const {data: screenshots} = useGameScreenshots(id)
     useEffect(() => {
       window.scrollTo(0, 0)
       // update the document title
@@ -59,8 +60,8 @@ const GameDetails = () => {
           stores={game?.stores} 
           />
         </div>
-        <GameClip
-        clip={game?.clip} 
+        <GameScreenshots
+        screenshots={screenshots?.results} 
         />
     </section>
   )

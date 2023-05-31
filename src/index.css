@@ -31,6 +31,32 @@ nav .logo span {
   color: #fb242b;
 }
 
+/* Splice Arrow Custom Classes*/
+.splide__arrow--prev {
+  @apply bg-indigo-300 text-indigo-700;
+}
+
+.splide__arrow--next {
+  @apply bg-indigo-300 text-indigo-700;
+}
+
+.splide__arrow {
+  @apply rounded-full p-2;
+}
+
+.splide__pagination__page {
+  @apply rounded-full;
+}
+
+.splide__pagination__page.is-active {
+  @apply bg-indigo-300;
+}
+
+.splide__pagination__page:not(.is-active) {
+  @apply bg-indigo-100;
+}
+
+
 
 .btn {
   @apply px-4 py-2 rounded-md text-white font-semibold bg-blue-500 transition-shadow duration-200 ease-in-out;
@@ -66,6 +92,10 @@ nav .logo span {
 
 .btn-secondary:focus {
   @apply outline-none ring-1 ring-offset-1 ring-offset-white ring-indigo-200;
+}
+
+.btn-secondary:disabled {
+  @apply opacity-50 cursor-not-allowed hover:shadow-none active:translate-y-0 focus:ring-offset-0;
 }
 
 *{

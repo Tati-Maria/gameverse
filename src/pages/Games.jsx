@@ -1,4 +1,5 @@
 import { useGetAllGames } from "../actions/useGetAllGames";
+import Loader from "../components/ui/Loader";
 import { useState, useEffect} from "react"
 import {BsArrowLeftShort, BsArrowRightShort} from "react-icons/bs"
 import GameCard from "../components/games/GameCard";
@@ -53,10 +54,12 @@ const Games = () => {
             rating={game.rating}
             background_image={game.background_image}
             id={game.id} 
+            metric={game.metacritic}
+            parent_platforms={game.parent_platforms}
             />
           ))}
           {isFetching && !isPreviousData && (
-            <div>Fetching more games</div>
+            <Loader />
           )}
         </ul>
         <div

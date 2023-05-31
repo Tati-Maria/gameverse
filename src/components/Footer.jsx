@@ -4,7 +4,7 @@ import {BsFillSuitHeartFill} from 'react-icons/bs'
 const Footer = () => {
   return (
     <footer
-    className="bg-gray-100 dark:bg-gray-800 py-10 px-5 mt-10 rounded-sm"
+    className="border-t-2 border-gray-100 dark:border-gray-800 py-6 px-5 mt-10 rounded-sm"
     >
         <div
         className="flex flex-col space-y-2 text-center"

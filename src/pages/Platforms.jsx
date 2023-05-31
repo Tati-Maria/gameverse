@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import GameHeader from '../components/games/GameHeader'
+import GameList from '../components/games/GameList'
 import {useGetPlatforms} from "../actions/getPlatforms"
 import Loader from '../components/ui/Loader'
 import DeveloperCard from '../components/developers/DeveloperCard'
@@ -19,7 +20,7 @@ const Platforms = () => {
 
     if (isError) return <div>{error.message}</div>;
 
-    const {results, next, previous} = data;
+    const {next, previous} = data;
 
     const handleNext = () => {
         if (!isPreviousData && next) {
@@ -34,20 +35,23 @@ const Platforms = () => {
     }
 
   return (
-    <section>
-        <GameHeader 
-        title="Find all gaming platforms here" 
+    <section
+    className="space-y-10"
+    >
+        <GameHeader
+        text={`Found ${data?.count} Gaming Platforms`}
         />
-        <ul>
-            {results?.map((platform) => (
+        <GameList>
+            {data?.results?.map(platform => (
                 <DeveloperCard
                 key={platform.id}
+                name={platform.name}
                 image={platform.image_background}
-                games={platform.games}
-                name={platform.name} 
+                id={platform.id}
+                games={platform.games_count}
                 />
             ))}
-        </ul>
+        </GameList>
         <div
         className="flex justify-center items-center space-x-4 py-4"
         >
