@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom"
 import {HiStar} from "react-icons/hi"
+import {SiIos} from "react-icons/si"
 import {BsPlaystation, BsXbox} from "react-icons/bs"
 import {HiComputerDesktop} from "react-icons/hi2"
 import LikeButton from "../ui/LikeButton"
@@ -24,10 +25,13 @@ const GameCard = ({
         return <BsPlaystation key={platform.platform.id} className="inline-block text-gray-500" />
       case "xbox":
         return <BsXbox key={platform.platform.id} className="inline-block text-gray-500" />
+      case "ios":
+        return <SiIos key={platform.platform.id} className="inline-block text-gray-500" />
       default:
         return null
     }
   });
+
 
   //change colort of metric based on value
   const metricColor = () => {

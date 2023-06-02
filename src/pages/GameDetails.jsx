@@ -2,14 +2,17 @@ import {useParams} from "react-router-dom"
 import {SlGameController} from "react-icons/sl"
 import {useGetSingleGame} from "../actions/useGetSingleGame"
 import { useEffect } from "react";
+import {useGameCreators} from "../actions/getDevelopmentTeam"
+import { useGameScreenshots } from "../actions/getGameScreenShots";
+// components
 import GameProfile from "../components/games/GameProfile";
 import GameScreenshots from "../components/games/GameScreenshots";
-import { useGameScreenshots } from "../actions/getGameScreenShots";
-import {useGameCreators} from "../actions/getDevelopmentTeam"
 import GameCreators from "../components/games/GameCreators";
 import GamePublishers from "../components/games/GamePublishers";
 import GameTags from "../components/games/GameTags";    
 import GameStores from "../components/games/GameStores";
+import Loader from "../components/ui/Loader";
+import LikeButton from "../components/ui/LikeButton";
 
 
 const GameDetails = () => {
@@ -24,20 +27,27 @@ const GameDetails = () => {
       document.title = `${game?.name} | GameVerse`
     }, [game?.name])
 
-    if (isLoading) return <div>Loading...</div>
+    if (isLoading) return <Loader />;
 
-    if (error) return <div>{error}</div>
+    if (error) {
+      return <p>
+        Error: {error?.message}
+      </p>;
+    }
     
   return (
     <section>
-        <h2
-        className="text-2xl flex items-center space-x-2 font-bold text-gray-800 uppercase tracking-wider dark:text-gray-100"
-        >
+        <article className="relative flex items-center justify-between">
+          <LikeButton game={{id, name: game?.name, rating: game?.rating, released: game?.released, background_image: game?.background_image}} />
+          <h2
+          className="text-2xl flex items-center space-x-2 font-bold text-gray-800 uppercase tracking-wider dark:text-gray-100"
+          >
             <SlGameController className="text-red-500" /> 
             <span>
                 {game?.name}
             </span>
         </h2>
+        </article>
         <GameProfile
         name={game?.name}
         background_image={game?.background_image}

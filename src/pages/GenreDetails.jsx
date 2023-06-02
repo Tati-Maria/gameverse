@@ -36,7 +36,7 @@ const GenreDetails = () => {
 
   return (
     <section>
-      <div>
+      <div className="space-y-10">
         <GenreHeader
         name={genre?.name}
         images={genre?.image_background}

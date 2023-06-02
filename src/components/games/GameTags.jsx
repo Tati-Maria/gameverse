@@ -20,7 +20,7 @@ const GameTags = ({
         <ul
         className="flex flex-wrap mt-2"
         >
-            {tags.map(tag => (
+            {tags?.length > 0 ? tags.map(tag => (
                 <li
                 className="mr-2 mb-2 px-2 py-1 bg-gray-200 rounded-lg text-sm text-gray-500" 
                 key={tag.id}>
@@ -28,7 +28,7 @@ const GameTags = ({
                         #{tag.name}
                     </span>
                 </li>
-            ))}
+            )): <p className="text-gray-500">No tags available!</p>}
         </ul>
     </div>
   )
