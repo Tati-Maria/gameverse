@@ -49,6 +49,7 @@ const Platforms = () => {
                 image={platform.image_background}
                 id={platform.id}
                 games={platform.games_count}
+                link={`/platforms/${platform.id}`}
                 />
             ))}
         </GameList>

@@ -18,6 +18,8 @@ import Platforms from './pages/Platforms.jsx';
 import NotFound from './pages/Not-Found.jsx';
 import CreatorDetail from './pages/CreatorDetail.jsx';
 import Favorites from './pages/Favorites.jsx';
+import DeveloperDetail from './pages/DeveloperDetail.jsx';
+import PlatformDetail from './pages/PlatformDetail.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,8 +30,10 @@ const router = createBrowserRouter(
       <Route path='/games/:id' element={<GameDetails />} />
       <Route path='/genres/:slug' element={<GenreDetails />} />
       <Route path='/developers' element={<Developers />} />
+      <Route path='/developers/:id' element={<DeveloperDetail />} />
       <Route path='/creators/:slug' element={<CreatorDetail />} />
       <Route path='/platforms' element={<Platforms />} />
+      <Route path='/platforms/:slug' element={<PlatformDetail />} />
       <Route path='*' element={<NotFound />} />
     </Route>,
   )

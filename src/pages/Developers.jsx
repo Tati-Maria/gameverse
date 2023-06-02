@@ -71,7 +71,7 @@ const Developers = () => {
                 games={developer.games_count}
                 name={developer.name}
                 image={developer.image_background}
-                
+                link={`/developers/${developer.id}`}
                 />
            ))}
         </GameList>

@@ -32,8 +32,6 @@ export const getGameScreenshots = async (id) => {
 
 
 //games with the highest rating
-
-
 export const getPopularGames = async() => {
     const {data} = await axios.get(`${apiUrl}/games?ordering=-rating&key=${apiKEY}&page_size=16&exclude_additions=true`);
     return data;
@@ -70,7 +68,7 @@ export const getAllCreators = async(page) => {
     return data;
 }
 
-//get single developer
+//get single creator
 export const getSingleCreator = async(id) => {
     const {data} = await axios.get(`${apiUrl}/creators/${id}?key=${apiKEY}`);
     return data;
@@ -79,5 +77,29 @@ export const getSingleCreator = async(id) => {
 // get creators without pagination
 export const getCreators = async() => {
     const {data} = await axios.get(`${apiUrl}/creators?key=${apiKEY}`);
+    return data;
+}
+
+//get single developer
+export const getSingleDeveloper = async(id) => {
+    const {data} = await axios.get(`${apiUrl}/developers/${id}?key=${apiKEY}`);
+    return data;
+}
+
+// get developer games with pagination
+export const getDeveloperGames = async(id, page) => {
+    const {data} = await axios.get(`${apiUrl}/games?key=${apiKEY}&developers=${id}&page=${page}&page_size=16`);
+    return data;
+}
+
+//get single platform
+export const getSinglePlatform = async(id) => {
+    const {data} = await axios.get(`${apiUrl}/platforms/${id}?key=${apiKEY}`);
+    return data;
+}
+
+// get platform games with pagination
+export const getPlatformGames = async(id, page) => {
+    const {data} = await axios.get(`${apiUrl}/games?key=${apiKEY}&platforms=${id}&page=${page}`);
     return data;
 }

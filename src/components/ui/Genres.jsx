@@ -12,8 +12,16 @@ const Genres = () => {
     className="overflow-x-auto flex flex-row flex-nowrap py-4 px-2 gap-4 w-full max-w-full h-20 bg-gray-100 dark:bg-gray-800 rounded-md shadow-md mt-6 scrollbar-hide"
     >
         {isLoading && (
-            <div className="flex items-center justify-center py-4">
-                <SyncLoader color="#3B82F6" />
+            <div className="flex items-center justify-center text-center py-4">
+                <SyncLoader
+                margin={2} 
+                size={10} 
+                color="#3B82F6" 
+                cssOverride={{
+                    display: 'block',
+                    margin: '0 auto',
+                }}
+                />
             </div>
         )}
         {data && data?.results?.map((genre) => (

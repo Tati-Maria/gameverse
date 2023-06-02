@@ -5,7 +5,8 @@ import GameCard from "../components/games/GameCard"
 import {useGetAllGenres} from "../actions/useGetAllGenres"
 import Loader from "../components/ui/Loader";
 import { useGetGameByGenre } from "../actions/useGetGameByGenre";
-import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
+import GameList from "../components/games/GameList";
+import Pagination from "../components/ui/Pagination";
 
 
 
@@ -41,7 +42,7 @@ const GenreDetails = () => {
         images={genre?.image_background}
         count={genre?.games_count}
         />
-        <ul
+        <GameList
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 my-10"
         >
           {games?.results.map((game) => (
@@ -59,30 +60,14 @@ const GenreDetails = () => {
           {isFetching && !isPreviousData && (
             <div>Fetching more games</div>
           )}
-        </ul>
-        <div
-        className="flex justify-center space-x-2"
-        >
-          {games?.previous && (
-            <button
-            className="btn"
-            disabled={isPreviousData}
-            >
-              <BsArrowLeftShort onClick={handlePrevious} />
-            </button>
-          )}
-          <span>
-           {page}
-          </span>
-          {games?.next && (
-            <button
-            className="btn"
-            onClick={() => setPage((prevPage) => prevPage + 1)}
-            >
-              <BsArrowRightShort size={20}/>
-            </button>
-          )}
-        </div>
+        </GameList>
+        <Pagination
+        handlePrevious={handlePrevious}
+        handleNext={() => setPage((prevPage) => prevPage + 1)}
+        disabledNext={isPreviousData || !games?.next}
+        disabledPrevious={page === 1}
+        page={page} 
+        />
       </div>
     </section>
   )

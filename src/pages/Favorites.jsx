@@ -1,6 +1,6 @@
 // react and react router dom imports
 import { useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // icons
 import {GiConsoleController} from "react-icons/gi";
 import {AiOutlineClear} from 'react-icons/ai';
@@ -9,13 +9,14 @@ import Title from "../components/ui/Title";
 import GameCard from "../components/games/GameCard";
 import GameList from "../components/games/GameList";
 import Button from "../components/ui/Button";
-// store zuustand
+// store zustand
 import { useFavoriteGamesStore } from '../store';
 // react hot toast
 import toast from 'react-hot-toast';
 
 
 const Favorites = () => {
+  const navigate = useNavigate();
   const favoriteGames = useFavoriteGamesStore(state => state.favoriteGames);
   const clearFavoriteGames = useFavoriteGamesStore(state => state.clearFavoriteGames);
 
@@ -47,7 +48,7 @@ const Favorites = () => {
             <p className="text-2xl font-semibold opacity-30 text-center">You don&#39;t have any favorite games yet</p>
             <Button
             className='btn-blue' 
-            action={() => <Navigate to="/games" />}
+            action={() => navigate('/games')}
             text="Find your favorite games"
             icon={GiConsoleController}
             type='button'
