@@ -24,7 +24,7 @@ This is a website that allows users to browse and search for video games. All ga
 ![Game](./src/assets/images/games.png)
 ![Genre](./src/assets/images/genre-page.png)
 
-## Features
+## Upcoming Features
 
 - Users can create an account and log in
 - Users can save games to their favorites list and remove them from their favorites list.
