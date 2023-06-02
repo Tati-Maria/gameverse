@@ -60,24 +60,11 @@ const Home = () => {
       <p className="text-center">A place to find your favorite games</p>
       </article>
       <article
-      className="my-6"
+      className="my-6 space-y-4"
       >
-        <div
-        className="flex justify-between items-center my-10"
-        >
-          <GameHeader
-            text="Popular Games"  
-            />
-            {/* <button
-            onClick={() => setOpen(prev => !prev)}
-            className="btn-secondary"
-            >
-              <IoLibraryOutline className="w-6 h-6" />
-              <span>
-                See all Genres
-              </span>
-            </button> */}
-        </div>
+        <GameHeader
+        text="Popular Games"
+        />
         <ul>
           <Splide
           options={options}
@@ -190,7 +177,7 @@ const Home = () => {
         />
         <p>
           <Link
-          className="btn" 
+          className="btn-blue" 
           to={`/games`}>
             See all games
           </Link>

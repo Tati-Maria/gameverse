@@ -1,7 +1,7 @@
 import {Menu} from "@headlessui/react"
 import {NavLink} from "react-router-dom"
 import {GiGameConsole} from "react-icons/gi"
-import {IoGameControllerOutline, IoHomeOutline, IoCodeOutline, IoMenu} from "react-icons/io5"
+import {IoGameControllerOutline, IoHomeOutline, IoCodeOutline, IoMenu, IoHeartOutline} from "react-icons/io5"
 
 
 const links = [
@@ -24,6 +24,11 @@ const links = [
         name: "Platforms",
         icon: <GiGameConsole className="w-5 h-5 mr-2" />,
         href: "/platforms"
+    },
+    {
+        name: "Favorites",
+        icon: <IoHeartOutline className="w-5 h-5 mr-2" />,
+        href: "/favorites"
     }
 ]
 

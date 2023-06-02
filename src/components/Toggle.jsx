@@ -12,10 +12,10 @@ const Toggle = ({
     className="fixed bottom-10 right-10 z-50"
     >
         <button
-        className="p-2 rounded-full bg-gray-800 text-gray-100 shadow-md"
+        className="h-14 w-14 flex items-center justify-center rounded-full bg-gray-800 text-gray-100 shadow-md"
         onClick={() => setToggle()}
         >
-            {toggle ? <BsSun /> : <BsMoon />}
+            {toggle ? <BsSun size={25} /> : <BsMoon size={25} />}
         </button>
     </div>
   )

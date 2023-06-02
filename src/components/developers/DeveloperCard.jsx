@@ -27,7 +27,7 @@ const DeveloperCard = ({
                 <small>{games} games</small>
                 {link && (
                   <Link
-                  className="text-blue-500 hover:underline" 
+                  className="btn-secondary" 
                   to={link}>
                       See more
                   </Link>

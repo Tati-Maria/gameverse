@@ -1,36 +1,10 @@
 /* eslint-disable react/prop-types */
 import {useGetAllCreators, useGetDevelopers} from "../actions/getDevelopers"
 import { useState, useEffect} from "react";
-import {CiCircleChevRight, CiCircleChevLeft} from "react-icons/ci";
 import DeveloperCard from "../components/developers/DeveloperCard";
 import Loader from "../components/ui/Loader";
-
-
-const Pagination = ({handleNextPage, handlePrevPage, disabledNext, disabledPrev, page}) => {
-    return (
-        <div
-        className="flex space-x-4 justify-center items-center my-10"
-        >
-            <button
-            disabled={disabledPrev === null}
-            onClick={handlePrevPage}
-            className="disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-                <CiCircleChevLeft size={40}/>
-            </button>
-            <span>
-                {page}
-            </span>
-            <button
-            disabled={disabledNext === null}
-            onClick={handleNextPage}
-            className="disabled:opacity-50 disabled:cursor-not-allowed text-blue-500 dark:text-blue-300 hover:text-blue-600 dark:hover:text-blue-400"
-            >
-                <CiCircleChevRight size={40}/>
-            </button>
-        </div>
-    )
-} 
+import Pagination from "../components/ui/Pagination";
+import GameList from "../components/games/GameList";
 
 const Developers = () => {
     const [page, setPage] = useState(1);
@@ -80,7 +54,7 @@ const Developers = () => {
                 </select>
             </form>
         </div>
-        <ul
+        <GameList
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
         >
            {creatorsType === "programmers" ? creators?.results.map((creator) => (
@@ -100,7 +74,7 @@ const Developers = () => {
                 
                 />
            ))}
-        </ul>
+        </GameList>
         <Pagination
         disabledNext={next}
         disabledPrev={previous}

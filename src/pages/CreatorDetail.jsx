@@ -12,7 +12,7 @@ const Dropdown = ({creatorGames}) => {
     className="relative inline-block text-left"
     >
       <Menu.Button
-      className="btn"
+      className="btn-blue"
       >
         See game list
       </Menu.Button>
@@ -56,13 +56,13 @@ const CreatorDetail = () => {
                 <img
                 src={creator.image || creator.image_background}
                 alt={creator.name}
-                className="object-cover h-64 rounded-full"
+                className="object-cover h-64 "
                 />
                 <div className='space-y-4'>
                 <small
                 className="block text-gray-500 dark:text-gray-400 uppercase font-semibold tracking-wider text-sm"
                 >
-                    {creator.positions[0].name}
+                    Position: {creator.positions[0].name}
                 </small>
                 <p>
                     {creator.description.split('<p>').join('').split('</p>').join('').split('<h3>').join('').split('</h3>').join('')}

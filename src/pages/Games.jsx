@@ -1,10 +1,10 @@
 import { useGetAllGames } from "../actions/useGetAllGames";
 import Loader from "../components/ui/Loader";
 import { useState, useEffect} from "react"
-import {BsArrowLeftShort, BsArrowRightShort} from "react-icons/bs"
 import GameCard from "../components/games/GameCard";
 import Title from "../components/ui/Title";
 import GameList from "../components/games/GameList";
+import Pagination from "../components/ui/Pagination";
 
 const Games = () => {
   const [page, setPage] = useState(1);
@@ -25,7 +25,11 @@ const Games = () => {
   }, [])
 
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <Loader />
+    )
+  }
 
   if (isError) return <div>Error {error.message}</div>;
 
@@ -61,26 +65,13 @@ const Games = () => {
             <Loader />
           )}
         </GameList>
-        <div
-        className="flex justify-center space-x-2"
-        >
-          {data?.previous && (
-            <button
-            className="btn"
-            disabled={isPreviousData}
-            >
-              <BsArrowLeftShort onClick={handlePrevious} />
-            </button>
-          )}
-          {data?.next && (
-            <button
-            className="btn"
-            onClick={() => setPage((prevPage) => prevPage + 1)}
-            >
-              <BsArrowRightShort size={20}/>
-            </button>
-          )}
-        </div>
+        <Pagination
+        page={page}
+        handleNextPage={() => setPage((old) => old + 1)}
+        handlePrevPage={handlePrevious}
+        disabledNext={data?.next}
+        disabledPrev={data?.previous} 
+        />
     </section>
   )
 }

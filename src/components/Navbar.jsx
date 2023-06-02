@@ -8,7 +8,7 @@ const Navbar = () => {
     
     return (
         <nav
-        className="relative flex items-center justify-between py-4 border-b border-blue-200 dark:border-gray-800 mb-4" 
+        className="relative flex items-center justify-between pb-4 border-b border-blue-200 dark:border-gray-800 mb-4" 
         >
             <Link 
             to={"/"} 

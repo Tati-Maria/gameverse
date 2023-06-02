@@ -3,8 +3,8 @@ import GameList from '../components/games/GameList'
 import {useGetPlatforms} from "../actions/getPlatforms"
 import Loader from '../components/ui/Loader'
 import DeveloperCard from '../components/developers/DeveloperCard'
-import {CiCircleChevRight, CiCircleChevLeft} from "react-icons/ci"
 import Title from '../components/ui/Title'
+import Pagination from '../components/ui/Pagination'
 
 
 const Platforms = () => {
@@ -52,25 +52,13 @@ const Platforms = () => {
                 />
             ))}
         </GameList>
-        <div
-        className="flex justify-center items-center space-x-4 py-4"
-        >
-            <button
-            className='btn'
-            onClick={handlePrevious}
-            disabled={isPreviousData || !previous}
-            >
-                <CiCircleChevLeft size={30} />
-            </button>
-            <span>{page}</span>
-            <button
-            className='btn'
-            onClick={handleNext}
-            disabled={isPreviousData || !next}
-            >
-                <CiCircleChevRight size={30}/>
-            </button>
-        </div>
+        <Pagination
+        page={page}
+        handleNextPage={handleNext}
+        handlePrevPage={handlePrevious}
+        disabledNext={next}
+        disabledPrev={previous} 
+        />
     </section>
   )
 }

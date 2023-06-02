@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import {HiStar} from "react-icons/hi"
 import {BsPlaystation, BsXbox} from "react-icons/bs"
 import {HiComputerDesktop} from "react-icons/hi2"
+import LikeButton from "../ui/LikeButton"
 
 
 const GameCard = ({
@@ -44,8 +45,9 @@ const GameCard = ({
 
   return (
     <div
-    className="p-4 bg-gray-100 rounded-md shadow-lg overflow-hidden hover:shadow-md transition-shadow duration-300 ease-in-out dark:bg-gray-800 dark:text-white" 
+    className="p-4 bg-gray-100 rounded-md shadow-lg overflow-hidden hover:shadow-md transition-shadow duration-300 ease-in-out dark:bg-gray-800 dark:text-white relative" 
     >
+      <LikeButton game={{id, name, rating, released, background_image}} />
       <Link 
       to={`/games/${id}`}
       className="flex flex-col space-y-4"
