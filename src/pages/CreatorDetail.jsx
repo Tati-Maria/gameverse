@@ -51,7 +51,7 @@ const CreatorDetail = () => {
   return (
     <div className='space-y-10'>
         <Title title={creator.name} />
-        <div className=''>
+        <div>
            <article className='flex items-center flex-col md:flex-row gap-8'>
                 <img
                 src={creator.image || creator.image_background}

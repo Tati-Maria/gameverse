@@ -8,7 +8,8 @@ const SearchResults = ({isLoading, data, clearInput}) => {
  const {results: games} = data;
 
   return (
-    <div 
+    <div
+    aria-label="search results" 
     className="absolute top-10 left-0 flex flex-col px-4 py-2 divide-y divide-gray-400 overflow-y-scroll w-full max-h-96 bg-gray-100 rounded-md shadow-md dark:bg-gray-800 dark:text-gray-100 z-50 "
     >
       {isLoading && (

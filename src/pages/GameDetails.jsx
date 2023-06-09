@@ -50,7 +50,7 @@ const GameDetails = () => {
         </article>
         <GameProfile
         name={game?.name}
-        background_image={game?.background_image}
+        background_image={game?.background_image || "https://via.placeholder.com/1920x1080"}
         description={game?.description_raw}
         released={game?.released}
         rating={game?.rating}

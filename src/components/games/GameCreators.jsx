@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import GameHeader from "./GameHeader"
+import placeholder from "../../assets/placeholder.png"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
 
 const options = {
@@ -50,7 +51,7 @@ const GameCreators = ({
                     className="flex flex-col space-y-2 border border-gray-200 dark:border-gray-800 rounded-lg p-4"
                     >
                         <img
-                        src={creator.image || "https://via.placeholder.com/300"}
+                        src={creator.image || `${placeholder}`}
                         alt={creator.name}
                         nonce="creators"
                         className="w-full h-64 object-cover rounded-lg shadow-md" 
@@ -69,7 +70,7 @@ const GameCreators = ({
 
                                     key={position.id}
                                     >
-                                        {position.name}
+                                        {position.name + " "}
                                     </span>
                                 ))}
                             </p>

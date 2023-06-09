@@ -8,6 +8,7 @@ const Genres = () => {
 
   return (
     <section
+    aria-label="genres"
     id="genres"
     className="overflow-x-auto flex flex-row flex-nowrap py-4 px-2 gap-4 w-full max-w-full h-20 bg-gray-100 dark:bg-gray-800 rounded-md shadow-md mt-6 scrollbar-hide"
     >

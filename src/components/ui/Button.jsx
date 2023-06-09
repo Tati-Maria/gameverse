@@ -7,9 +7,11 @@ const Button = ({
     icon: Icon,
     type="button",
     className="",
+    disabled=false
 }) => {
   return (
     <button
+    disabled={disabled}
     type={type}
     onClick={action}
     className={` ${className}`}

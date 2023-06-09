@@ -8,23 +8,22 @@ const Pagination = ({
 
   return (
     <div
-    className="flex space-x-4 justify-center items-center my-10"
+    className="flex space-x-4 justify-center items-center my-10 py-10"
     role="navigation"
     aria-label="Pagination Navigation"
-    aria-disabled={disabledPrev === null}
     id="pagination"
     >
         <Button
-        disabled={disabledPrev === null}
+        disabled={disabledPrev}
         icon={MdFirstPage}
         action={handlePrevPage} 
         className="btn-blue"
         />
         <span>
-            {page}
+            1 - {page}
         </span>
         <Button
-        disabled={disabledNext === null}
+        disabled={disabledNext}
         className="btn-blue"
         action={handleNextPage}
         icon={MdLastPage} 

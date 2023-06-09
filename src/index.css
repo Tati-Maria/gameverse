@@ -31,13 +31,13 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #fb242b;
+  background-color: rgb(59 130 246);
   border-radius: 15px;
   border: 3px solid #fff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(251, 36, 43, 0.5);
+  background-color: rgba(59, 131, 246, 0.656);
 }
 
 nav .logo {
@@ -89,7 +89,7 @@ nav .logo span {
 }
 
 .btn-blue:disabled, .btn-secondary:disabled {
-  @apply opacity-50 cursor-not-allowed;
+  @apply opacity-50 cursor-not-allowed pointer-events-none;
 }
 
 .btn-blue svg {
@@ -144,4 +144,23 @@ section#genres::-webkit-scrollbar-thumb {
   background-color: transparent;
   border-radius: 15px;
   border: 3px solid transparent;
+}
+
+@media screen and (min-width: 1024px) {
+  
+  section#genres::-webkit-scrollbar {
+    display: block;
+    width: 5px;
+    height: 5px;
+  }
+
+  section#genres::-webkit-scrollbar-track {
+    width: 5px;
+  }
+
+  section#genres::-webkit-scrollbar-thumb {
+    background-color: rgb(59 130 246);
+    border-radius: 15px;
+    border: 3px solid transparent;
+  }
 }

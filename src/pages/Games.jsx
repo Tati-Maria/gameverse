@@ -8,6 +8,7 @@ import Pagination from "../components/ui/Pagination";
 
 const Games = () => {
   const [page, setPage] = useState(1);
+ 
   const {
     data,
     isLoading,
@@ -69,8 +70,8 @@ const Games = () => {
         page={page}
         handleNextPage={() => setPage((old) => old + 1)}
         handlePrevPage={handlePrevious}
-        disabledNext={data?.next}
-        disabledPrev={data?.previous} 
+        disabledNext={isPreviousData || !data?.next}
+        disabledPrev={page === 1} 
         />
     </section>
   )

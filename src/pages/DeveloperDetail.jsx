@@ -6,12 +6,12 @@ import { useSingleDeveloper } from "../actions/getSingleDeveloper"
 import GenreHeader from "../components/genres/GenreHeader";
 import GameList from "../components/games/GameList";
 import GameCard from "../components/games/GameCard";
+import Pagination from "../components/ui/Pagination";
 
 const DeveloperDetail = () => {
     const { id } = useParams()
     const {isLoading, data: developer, error} = useSingleDeveloper(id);
     const [page, setPage] = useState(1);
-    const [showMore, setShowMore] = useState(false);
     const {isLoading: isLoadingGames, data: games, error: errorGames, isPreviousData} = useGameByDeveloper(id, page);
     
     if (isLoading || isLoadingGames) {
@@ -19,14 +19,21 @@ const DeveloperDetail = () => {
     }
 
     if (error || errorGames) {
-        return <div>Error: {error}</div>
+        return <div>Error: {error?.message}</div>
     }
 
-    const handleShowMore = () => {
-        setPage((old) => old + 1);
-        setShowMore(true);
+
+    const handlePrevious = () => {
+        setPage((prevPage) => prevPage - 1)
     }
 
+    const handleNext = () => {
+        if(!isPreviousData) {
+            setPage((prevPage) => prevPage + 1)
+        }
+    }
+
+    
 
 
   return (
@@ -51,15 +58,14 @@ const DeveloperDetail = () => {
                     />
                 ))}
             </GameList>
-            {!isPreviousData && games?.next && (
-                <button
-                className="btn-secondary"
-                onClick={handleShowMore}
-                type="button"
-                >
-                    {showMore ? "Show Less" : "Show More"}
-                </button>
-            )}
+            {/* Disable when it reached the end of the game list*/}
+            {/* <Pagination
+            disabledNext={isPreviousData}
+            disabledPrev={page === 1}
+            handleNextPage={handleNext}
+            handlePrevPage={handlePrevious}
+            page={page}
+            /> */}
         </div>
     </section>
   )
