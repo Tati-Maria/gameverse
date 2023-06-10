@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom"
 import {HiStar} from "react-icons/hi"
 import {SiIos} from "react-icons/si"
-import {BsPlaystation, BsXbox, BsNintendoSwitch} from "react-icons/bs"
+import {BsPlaystation, BsXbox, BsNintendoSwitch, BsAndroid2} from "react-icons/bs"
 import {HiComputerDesktop} from "react-icons/hi2"
 import LikeButton from "../ui/LikeButton"
 
@@ -29,6 +29,8 @@ const GameCard = ({
         return <SiIos key={platform.platform.id} className="inline-block text-gray-500" />
       case "nintendo":
         return <BsNintendoSwitch key={platform.platform.id} className="inline-block text-gray-500" />
+      case "android":
+        return <BsAndroid2 key={platform.platform.id} className="inline-block text-gray-500" />  
       default:
         return null
     }
@@ -71,7 +73,7 @@ const GameCard = ({
           </div>
           <div className="flex justify-between items-center">
             <h4>
-              {name && name.length > 20 ? `${name.substring(0, 35)}...` : name}
+              {name && name.length > 20 ? `${name.substring(0, 20)}...` : name}
             </h4>
             <div className={`rounded-full w-6 h-6 flex justify-center items-center ${metricColor()}`}>
               <span className="text-xs">{metric}</span>

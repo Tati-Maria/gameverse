@@ -23,7 +23,7 @@ export const useGameByDeveloper = (id, page) => {
     });
 
     return {
-        data: data?.results,
+        data,
         error,
         isLoading,
         isPreviousData

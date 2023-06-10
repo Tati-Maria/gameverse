@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useGetAllCreators, useGetDevelopers } from "../actions/getDevelopers";
+import placeholder from "../assets/placeholder.png";
 import { useState, useEffect } from "react";
 import DeveloperCard from "../components/developers/DeveloperCard";
 import Loader from "../components/ui/Loader";
@@ -61,12 +62,12 @@ const Developers = () => {
       </div>
       <GameList className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {creatorsType === "programmers"
-          ? creators?.results.map(creator => (
+          ? creators?.results?.map(creator => (
               <DeveloperCard
                 key={creator.id}
                 games={creator.games_count}
                 name={creator.name}
-                image={creator.image || "https://via.placeholder.com/300"}
+                image={creator.image || placeholder}
                 link={`/creators/${creator.slug}`}
               />
             ))

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import Loader from "../components/ui/Loader"
 import { useGameByDeveloper } from "../actions/getGameByDeveloper";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSingleDeveloper } from "../actions/getSingleDeveloper"
 import GenreHeader from "../components/genres/GenreHeader";
 import GameList from "../components/games/GameList";
@@ -13,6 +13,11 @@ const DeveloperDetail = () => {
     const {isLoading, data: developer, error} = useSingleDeveloper(id);
     const [page, setPage] = useState(1);
     const {isLoading: isLoadingGames, data: games, error: errorGames, isPreviousData} = useGameByDeveloper(id, page);
+
+    useEffect(() => {
+        window.scrollTo({behavior: 'smooth', top: '0px'})
+        document.title = `${developer?.name} | GameVerse`
+    }, [developer])
     
     if (isLoading || isLoadingGames) {
         return <Loader />
@@ -45,7 +50,7 @@ const DeveloperDetail = () => {
             count={developer?.games_count}
             />
             <GameList>
-                {games?.map((game) => (
+                {games?.results?.map((game) => (
                     <GameCard
                     key={game?.id}
                     name={game?.name}
@@ -59,13 +64,13 @@ const DeveloperDetail = () => {
                 ))}
             </GameList>
             {/* Disable when it reached the end of the game list*/}
-            {/* <Pagination
-            disabledNext={isPreviousData}
+            <Pagination
+            disabledNext={isPreviousData || !games?.next}
             disabledPrev={page === 1}
             handleNextPage={handleNext}
             handlePrevPage={handlePrevious}
             page={page}
-            /> */}
+            />
         </div>
     </section>
   )

@@ -1,18 +1,23 @@
 import { useParams } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSinglePlatform } from '../actions/getSingleDeveloper'
 import { usePlatformGames } from '../actions/getGamesByPlatform'
 import Loader from '../components/ui/Loader'
 import GameCard from '../components/games/GameCard'
 import GenreHeader from '../components/genres/GenreHeader'
 import GameList from '../components/games/GameList'
+import Pagination from '../components/ui/Pagination'
 
 const PlatformDetail = () => {
     const { slug } = useParams();
     const [page, setPage] = useState(1);
-    const [showMore, setShowMore] = useState(false);
     const {isLoading, data: platform, error} = useSinglePlatform(slug);
     const {isLoading: isLoadingGames, data: games, error: errorGames, isPreviousData} = usePlatformGames(slug, page);
+
+    useEffect(() => {
+        window.scrollTo({behavior: 'smooth', top: '0px'})
+        document.title = `${platform?.name} | GameVerse`
+    }, [platform])
 
     if (isLoading || isLoadingGames ) {
         return <Loader />
@@ -22,9 +27,16 @@ const PlatformDetail = () => {
         return <div>Platform not found</div>
     } 
 
-    const handleShowMore = () => {
-        setPage((old) => old + 1);
-        setShowMore(true);
+    const handleNextPage = () => {
+        if (!isPreviousData) {
+            setPage((prevPage) => prevPage + 1)
+        }
+    }
+
+    const handlePreviousPage = () => {
+        if (!isPreviousData) {
+            setPage((prevPage) => prevPage - 1)
+        }
     }
 
   return (
@@ -36,7 +48,7 @@ const PlatformDetail = () => {
             images={platform?.image_background} 
             />
             <GameList>
-                {games?.map((game) => (
+                {games?.results?.map((game) => (
                     <GameCard
                     key={game.id}
                     id={game.id}
@@ -50,15 +62,13 @@ const PlatformDetail = () => {
                     />
                 ))}
             </GameList>
-            {!isPreviousData && games?.next && (
-                <button
-                className="btn-secondary"
-                onClick={handleShowMore}
-                type="button"
-                >
-                    {showMore ? "Show Less" : "Show More"}
-                </button>
-            )}
+            <Pagination
+            handleNextPage={handleNextPage}
+            handlePrevPage={handlePreviousPage}
+            disabledNext={games?.next === null || !games?.next}
+            disabledPrev={games?.previous === null || !games?.previous}
+            page={page} 
+            />
         </div>
     </section>
   )

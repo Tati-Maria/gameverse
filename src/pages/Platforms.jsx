@@ -57,8 +57,8 @@ const Platforms = () => {
         page={page}
         handleNextPage={handleNext}
         handlePrevPage={handlePrevious}
-        disabledNext={next}
-        disabledPrev={previous} 
+        disabledNext={isPreviousData || !next}
+        disabledPrev={isPreviousData || !previous} 
         />
     </section>
   )
