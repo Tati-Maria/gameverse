@@ -77,6 +77,7 @@ const Games = () => {
             id={game.id} 
             metric={game.metacritic || 0}
             parent_platforms={game.parent_platforms}
+            mature={game.esrb_rating && game.esrb_rating.name === "Adults Only"}
             />
           ))}
           {isFetching && !isPreviousData && (
