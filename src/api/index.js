@@ -14,6 +14,12 @@ const currentMonthString = currentMonth < 10 ? `0${currentMonth}` : `${currentMo
 const currentDayString = currentDay < 10 ? `0${currentDay}` : `${currentDay}`;
 const currentDateString = `${currentYear}-${currentMonthString}-${currentDayString}`;
 
+//get all the games + pagination + ordering
+export const getAllGames = async (ordering, page) => {
+    const {data} = await axios.get(`${apiUrl}/games?key=${apiKEY}&ordering=${ordering}&page=${page}&page_size=16&exclude_additions=true&dates=1960-01-01,2025-01-01`);
+    return data;
+};
+
 export const getDevelopers = async (page=1) => {
     const { data } = await axios.get(`${apiUrl}/developers?key=${apiKEY}&page=${page}&page_size=16`);
     return data;

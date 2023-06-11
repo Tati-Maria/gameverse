@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom"
 import {HiStar} from "react-icons/hi"
 import {SiIos} from "react-icons/si"
-import {BsPlaystation, BsXbox, BsNintendoSwitch, BsAndroid2} from "react-icons/bs"
+import {BsPlaystation, BsXbox, BsNintendoSwitch, BsAndroid2, BsImageFill} from "react-icons/bs"
 import {HiComputerDesktop} from "react-icons/hi2"
 import LikeButton from "../ui/LikeButton"
 
@@ -60,11 +60,19 @@ const GameCard = ({
       to={`/games/${id}`}
       className="flex flex-col space-y-4"
       >
-        <img 
-        src={background_image} 
-        alt={name}
-        className="w-full h-48 object-cover rounded-md" 
-        />
+        {background_image ? (
+          <img 
+          src={background_image} 
+          alt={name}
+          className="w-full h-48 object-cover rounded-md" 
+          />
+        ): (
+          <div
+          className="w-full h-48 bg-gray-300 rounded-md dark:bg-gray-700"
+          >
+            <BsImageFill className="w-full h-full text-gray-500" />
+          </div>
+        )}
         <div
         className="flex flex-col space-y-1"
         >

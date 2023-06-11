@@ -56,7 +56,7 @@ const DeveloperDetail = () => {
                     name={game?.name}
                     released={game?.released}
                     id={game?.id}
-                    background_image={game?.background_image || "https://via.placeholder.com/300x400"}
+                    background_image={game?.background_image}
                     metric={game.metacritic || 0}
                     parent_platforms={game.parent_platforms}
                     rating={game?.rating} 

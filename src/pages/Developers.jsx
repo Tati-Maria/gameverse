@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useGetAllCreators, useGetDevelopers } from "../actions/getDevelopers";
-import placeholder from "../assets/placeholder.png";
 import { useState, useEffect } from "react";
 import DeveloperCard from "../components/developers/DeveloperCard";
 import Loader from "../components/ui/Loader";
 import Pagination from "../components/ui/Pagination";
 import GameList from "../components/games/GameList";
+import CreatorCard from "../components/developers/CreatorCard";
 
 const Developers = () => {
   const [page, setPage] = useState(1);
@@ -27,7 +27,7 @@ const Developers = () => {
   if (isError || creatorsError) return <div>{error.message}</div>;
 
   const { next, previous } = data;
-  const { next: creatorNext, previous: creatorPrevious } = creators;
+  
 
   const handleNextPage = () => {
     if (!isPreviousData && next) {
@@ -45,7 +45,7 @@ const Developers = () => {
     <section className="space-y-10">
       <div className="flex justify-between items-center">
         <h2 className="font-flipahaus uppercase text-2xl">
-          {creatorsType === "programmers" ? "Programmers" : "Companies"}
+          {creatorsType === "programmers" ? `Programmers (${creators.count})` : `Companies (${data.count})`}
         </h2>
         <form>
           <select
@@ -63,12 +63,12 @@ const Developers = () => {
       <GameList className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {creatorsType === "programmers"
           ? creators?.results?.map(creator => (
-              <DeveloperCard
-                key={creator.id}
-                games={creator.games_count}
-                name={creator.name}
-                image={creator.image || placeholder}
-                link={`/creators/${creator.slug}`}
+              <CreatorCard
+              key={creator.id}
+              id={creator.slug}
+              name={creator.name}
+              games={creator.games_count}
+              image={creator.image}
               />
             ))
           : data.results.map(developer => (
@@ -82,8 +82,8 @@ const Developers = () => {
             ))}
       </GameList>
       <Pagination
-        disabledNext={next === null || creatorNext === null || !next} // if next is null or creatorNext is null or next is false 
-        disabledPrev={previous === null || creatorPrevious === null || !previous} // if previous is null or creatorPrevious is null or previous is false
+        disabledNext={!next || isPreviousData} // if next is null or isPreviousData is true
+        disabledPrev={!previous || isPreviousData} // if previous is null or isPreviousData is true
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}
         page={page}

@@ -8,7 +8,7 @@ import Pagination from "../components/ui/Pagination";
 
 const Games = () => {
   const [page, setPage] = useState(1);
- 
+  const [ordering, setOrdering] = useState("-rating");
   const {
     data,
     isLoading,
@@ -16,7 +16,7 @@ const Games = () => {
     isFetching,
     isPreviousData,
     error
-  } = useGetAllGames(page);
+  } = useGetAllGames(ordering, page);
 
 
   useEffect(() => {
@@ -45,9 +45,26 @@ const Games = () => {
     <section
     className="space-y-4"
     >
+       <div
+        className="flex justify-between items-center py-10"
+       >
         <Title
-        title="All Games" 
+        title="All Games"
         />
+        <select
+        onChange={(e) => setOrdering(e.target.value)}
+        value={ordering}  
+        name="ordering" 
+        id="ordering"
+        className="bg-gray-100 text-black rounded-md px-4 py-3 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-blue-700"
+        >
+          <option value="name">Name</option>
+          <option value="-released">Released</option>
+          <option value="-rating">Rating</option>
+          <option value="-metacritic">Metacritic</option>
+          <option value="-added">Added</option>
+        </select>
+       </div>
         <GameList
         >
           {results?.map((game) => (
@@ -58,7 +75,7 @@ const Games = () => {
             rating={game.rating}
             background_image={game.background_image}
             id={game.id} 
-            metric={game.metacritic}
+            metric={game.metacritic || 0}
             parent_platforms={game.parent_platforms}
             />
           ))}

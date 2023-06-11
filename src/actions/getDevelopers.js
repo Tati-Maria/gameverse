@@ -38,6 +38,12 @@ export const useGetAllCreators = (page) => {
                 return lastPage.next;
             }
             return false;
+        },
+        getPreviousPageParam: (firstPage) => {
+            if(firstPage.previous) {
+                return firstPage.previous;
+            }
+            return false;
         }
     });
 
