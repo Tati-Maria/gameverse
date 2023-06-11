@@ -50,7 +50,7 @@ const GameDetails = () => {
         </article>
         <GameProfile
         name={game?.name}
-        background_image={game?.background_image || "https://via.placeholder.com/1920x1080"}
+        background_image={game?.background_image || game?.background_image_additional}
         description={game?.description_raw}
         released={game?.released}
         rating={game?.rating}
@@ -60,6 +60,13 @@ const GameDetails = () => {
         playtime={game?.playtime}
         ratings={game?.ratings}
         color={game?.dominant_color}
+        esrb_rating={game?.esrb_rating}
+        metaCritic={game?.metacritic}
+        added_by_status={game?.added_by_status}
+        achievements_count={game?.achievements_count}
+        reddit_count={game?.reddit_count}
+        twitch_count={game?.twitch_count}
+        youtube_count={game?.youtube_count}
         />
         <div
         className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4"

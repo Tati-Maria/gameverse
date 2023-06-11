@@ -74,7 +74,7 @@ const Games = () => {
             released={game.released}
             rating={game.rating}
             background_image={game.background_image}
-            id={game.id} 
+            id={game.slug} 
             metric={game.metacritic || 0}
             parent_platforms={game.parent_platforms}
             mature={game.esrb_rating && game.esrb_rating.name === "Adults Only"}
