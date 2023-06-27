@@ -8,7 +8,7 @@ import Pagination from "../components/ui/Pagination";
 
 const Games = () => {
   const [page, setPage] = useState(1);
-  const [ordering, setOrdering] = useState("-rating");
+  const [ordering, setOrdering] = useState("-metacritic");
   const {
     data,
     isLoading,

@@ -16,7 +16,7 @@ const currentDateString = `${currentYear}-${currentMonthString}-${currentDayStri
 
 //get all the games + pagination + ordering
 export const getAllGames = async (ordering, page) => {
-    const {data} = await axios.get(`${apiUrl}/games?key=${apiKEY}&ordering=${ordering}&page=${page}&page_size=16&exclude_additions=true&dates=1960-01-01,2025-01-01`);
+    const {data} = await axios.get(`${apiUrl}/games?key=${apiKEY}&ordering=${ordering}&page=${page}&page_size=20&exclude_additions=true&dates=2000-01-01,2025-01-01`);
     return data;
 };
 
@@ -39,13 +39,13 @@ export const getGameScreenshots = async (id) => {
 
 //games with the highest rating
 export const getPopularGames = async() => {
-    const {data} = await axios.get(`${apiUrl}/games?ordering=-rating&key=${apiKEY}&page_size=16&exclude_additions=true`);
+    const {data} = await axios.get(`${apiUrl}/games?ordering=-rating&key=${apiKEY}&page_size=16&exclude_additions=true&dates=2022-01-01,2025-01-01`);
     return data;
 }
 
 //games with the highest rating
 export const getTrendingGames = async() => {
-    const {data} = await axios.get(`${apiUrl}/games?ordering=-metacritic&key=${apiKEY}&page_size=10`);
+    const {data} = await axios.get(`${apiUrl}/games?ordering=-metacritic&key=${apiKEY}&page_size=10&dates=2022-01-01,${currentDateString}&exclude_additions=true&metacritic=80,100&parent_platforms=1,2,3,4,5,6,7,8,9`);
     return data;
 }
 

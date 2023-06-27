@@ -54,7 +54,7 @@ const Home = () => {
   return (
     <section className="relative space-y-10">
       <article
-      className="bg-gray-100 border border-gray-200 rounded-xl p-6 my-6 dark:bg-gray-800 dark:border-gray-700"
+      className="bg-gray-100 border border-gray-200 rounded-xl p-6 dark:bg-gray-800 dark:border-gray-700"
       >
       <h1 className="text-3xl text-center font-bold">Welcome to GameVerse</h1>
       <p className="text-center">A place to find your favorite games</p>
@@ -63,7 +63,7 @@ const Home = () => {
       className="my-6 space-y-4"
       >
         <GameHeader
-        text="Popular Games"
+        text="Popular Games 2023"
         />
         <ul>
           <Splide
@@ -109,7 +109,7 @@ const Home = () => {
                 id={game.id}
                 name={game.name}
                 metric={game.metacritic || 0}
-                background_image={game.background_image || "https://via.placeholder.com/300"}
+                background_image={game.background_image}
                 rating={game.rating}
                 released={game.released}
                 parent_platforms={game.parent_platforms}
